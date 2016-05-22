@@ -1,0 +1,22 @@
+{
+  "name": "gauge",
+  "version": "1.0.0",
+  "authors": [
+    "Andrew Kuznecov <andrew.a.kuznecov@gmail.com>"
+  ],
+  "description": "JavaScript & CSS gauge",
+  "main": "dist/gauge.min.js",
+  "keywords": [
+    "gauge",
+    "gauge.js"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/AndKu/gauge",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

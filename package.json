@@ -1,0 +1,18 @@
+{
+  "name": "gauge",
+  "version": "1.0.0",
+  "description": "JavaScript & CSS gauge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "gauge",
+    "gauge.js"
+  ],
+  "author": "Andrew Kuznecov <andrew.a.kuznecov@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+  },
+  "homepage": "https://github.com/AndKu/gauge"
+}
