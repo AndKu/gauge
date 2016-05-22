@@ -249,3 +249,9 @@ function Gauge(element, configs) {
 
     this.draw();
 }
+
+(function( $ ) {
+  $.fn.gauge = function(configs) {
+    return new Gauge(this[0], configs);
+  };
+})(jQuery);

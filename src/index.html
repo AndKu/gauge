@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Gauge Test</title>
     <link rel="stylesheet" href="gauge.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="gauge.min.js"></script>
     <style>
     h1, h2 {
@@ -16,6 +17,8 @@
 <div id="gauge"></div>
 <h2>customize gauge</h2>
 <div id="gauge2"></div>
+<h2>gauge as jquery plugin</h2>
+<div id="gauge3"></div>
 <script>
     function getRandomIntValue() {
       return Math.random() * 100;
@@ -44,6 +47,13 @@
             gauge2.setValue(getRandomIntValue());
         }, 1000);
     };
+
+    $(function(){
+        var gauge3 = $('#gauge3').gauge({value: 10});
+        setInterval(function() {
+            gauge3.setValue(getRandomIntValue());
+        }, 1000);
+    });
 
 </script>
 </body>
