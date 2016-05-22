@@ -24,7 +24,8 @@ function Gauge(element, configs) {
             ],
             marksInside: false
         },
-        self = this;
+        self = this,
+        newGauge = false;
 
     for (var def in defaultsConfigs) {
         if (typeof configs[def] === 'undefined') {
@@ -34,7 +35,24 @@ function Gauge(element, configs) {
 
     this.configs = configs;
 
+    /**
+     * Отрисовать gauge, сначала очистив содержимое элемента element
+     * затем создется элемент newGauge,
+     * после в него добавляются все элементы gauge
+     * и отрисовывается newGauge в необходимый элемент element
+     *
+     * @return {Gauge}
+     */
     this.draw = function() {
+        while (element.lastChild){
+            element.removeChild(element.lastChild);
+        }
+
+        self.newGauge = self._getDomElement("gauge");
+
+        element.appendChild(this.newGauge);
+
+        return self;
     }
 
     this.setValue = function(value) {
