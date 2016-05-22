@@ -158,6 +158,22 @@ function Gauge(element, configs) {
     }
 
     /**
+     * Получить dom побочной точки
+     *
+     * @param  {number} numberMinorMark номер побочной отметки
+     * @param  {number} numberMark      номер отметки после которой отмечаются побочные точки
+     * @return {object}             domElement c вычесленным поворотом блока
+     */
+    this._getMinorMark = function(numberMinorMark, numberMark) {
+        var minorMark = self._getDomElement(self.configs.marksInside ? "gauge__mark gauge__mark--minor gauge__mark--inside" : "gauge__mark gauge__mark--minor");
+        var rotate = calcStartRotate((100 / (self.configs.marks.length - 1)) * (numberMark + numberMinorMark / self.configs.countMinorSegments));
+
+        minorMark.style.transform = 'rotate(' + rotate + 'deg)';
+
+        return minorMark;
+    }
+
+    /**
      * Отрисовка побочных точек
      *
      * @param  {number} numberMark номер отметки для вычисления положения
