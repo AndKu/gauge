@@ -1,6 +1,6 @@
 # Gauge.js
 
-see [dist/index.html](https://github.com/AndKu/gauge/dist/index.html)  for example
+see [dist/index.html](https://github.com/AndKu/gauge/blob/master/build/index.html)  for example
 
 ## Build
 
