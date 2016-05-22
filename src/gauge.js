@@ -49,6 +49,39 @@ function Gauge(element, configs) {
         return element;
     }
 
+
+    /**
+     * Отрисовать цветовые сегменты
+     */
+    this._drawSegments = function() {
+        var newSegment = false;
+        var segmentStart = 0;
+        for (var i = 0; i < self.configs.segments.length; i++) {
+
+            if (self.configs.segments[i-1]) {
+                var segmentStart = self.configs.segments[i-1].endPosition;
+            }
+
+            newSegment = self._getSegment(
+                segmentStart,
+                self.configs.segments[i].endPosition,
+                self.configs.segments[i].color
+            );
+
+            // if segment more then div of segment (delete white spaces)
+            if ((self.configs.segments[i].endPosition - segmentStart) > 18000 / self.configs.aperture) {
+                var segmentSpacer = self._getSegment(
+                    self.configs.segments[i].endPosition - 18000 / self.configs.aperture,
+                    self.configs.segments[i].endPosition,
+                    self.configs.segments[i].color
+                );
+                self.newGauge.appendChild(segmentSpacer);
+            }
+
+            self.newGauge.appendChild(newSegment);
+        }
+    }
+
      * Отрисовать gauge, сначала очистив содержимое элемента element
      * затем создется элемент newGauge,
      * после в него добавляются все элементы gauge
@@ -64,6 +97,7 @@ function Gauge(element, configs) {
         self.newGauge = self._getDomElement("gauge");
 
         element.appendChild(this.newGauge);
+        self._drawSegments();
 
         return self;
     }
