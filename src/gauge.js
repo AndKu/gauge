@@ -127,6 +127,14 @@ function Gauge(element, configs) {
         }
     }
 
+    /**
+     * Отрисовка отметок
+     */
+    this._drawMarks = function() {
+        for (var i = 0; i < self.configs.marks.length; i++) {
+            self.newGauge.appendChild(self._getMark(i));
+        }
+    }
      * Отрисовать gauge, сначала очистив содержимое элемента element
      * затем создется элемент newGauge,
      * после в него добавляются все элементы gauge
@@ -143,6 +151,7 @@ function Gauge(element, configs) {
 
         element.appendChild(this.newGauge);
         self._drawSegments();
+        self._drawMarks();
 
         return self;
     }
