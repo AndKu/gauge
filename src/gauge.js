@@ -49,6 +49,31 @@ function Gauge(element, configs) {
         return element;
     }
 
+    /**
+     * Получить dom сегмента
+     *
+     * @param  {number} startSegmet  начало сегмента в процентах от апертуры
+     * @param  {number} endSegment   конец сегмента в процентах от апертуры
+     * @param  {string} colorSegment Цвет сегмента
+     * @return {object}              domElement c вычесленным поворотом блока
+     */
+    this._getSegment = function(startSegmet, endSegment, colorSegment) {
+        if(startSegmet < 0 || startSegmet > 100 || !startSegmet) startSegmet = 0;
+        if(endSegment < 0 || endSegment > 100 || !endSegment) endSegment = 100;
+
+        var segment = self._getDomElement('gauge__segment-start');
+        var segmentEnd = self._getDomElement('gauge__segment-end');
+        var segmentColor = self._getDomElement('gauge__segment-color');
+
+        segment.style.transform = 'rotate(' + calcStartRotate(startSegmet) + 'deg)';
+        segmentEnd.style.transform = 'rotate(' + calcSegmentEndRotate(startSegmet, endSegment) + 'deg)';
+        segmentColor.style.borderColor = colorSegment;
+
+        segmentEnd.appendChild(segmentColor);
+        segment.appendChild(segmentEnd);
+
+        return segment;
+    }
 
     /**
      * Отрисовать цветовые сегменты
