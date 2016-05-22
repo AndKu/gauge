@@ -5,3 +5,26 @@
     height: 400px;
     width: 400px;
 }
+
+.gauge__segment-start {
+    position: absolute;
+    overflow: hidden;
+    height: 50%;
+    transform-origin: 50% 100%;
+    width: 100%;
+}
+
+.gauge__segment-end {
+    overflow: hidden;
+    height: 100%;
+    transform-origin: 50% 100%;
+    width: 100%;
+}
+
+.gauge__segment-color {
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 5px solid gray;
+    height: 200%;
+    width: 100%;
+}
