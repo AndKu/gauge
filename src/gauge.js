@@ -26,6 +26,8 @@ function Gauge(element, configs) {
         },
         self = this,
         newGauge = false;
+        newGauge = false,
+        arrowElement = false;
 
     for (var def in defaultsConfigs) {
         if (typeof configs[def] === 'undefined') {
@@ -195,6 +197,7 @@ function Gauge(element, configs) {
         var rotate = calcStartRotate(self.configs.value);
 
         arrow.style.transform = 'rotate(' + rotate + 'deg)';
+        self.arrowElement = arrow;
 
         arrow.appendChild(round);
         self.newGauge.appendChild(arrow);
@@ -242,6 +245,7 @@ function Gauge(element, configs) {
         }
 
         self.value = value;
+        arrowElement.style.transform = 'rotate(' + calcStartRotate(value) + 'deg)';
     }
 
     this.draw();
