@@ -25,7 +25,6 @@ function Gauge(element, configs) {
             marksInside: false
         },
         self = this,
-        newGauge = false;
         newGauge = false,
         arrowElement = false;
 
@@ -219,9 +218,9 @@ function Gauge(element, configs) {
         var gaugeWrap = self._getDomElement("gaugeWrap");
         self.newGauge = self._getDomElement("gauge");
 
-        self._drawArrow();
         self._drawSegments();
         self._drawMarks();
+        self._drawArrow();
 
         gaugeWrap.appendChild(this.newGauge);
         element.appendChild(gaugeWrap);
