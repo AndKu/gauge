@@ -153,7 +153,21 @@ function Gauge(element, configs) {
     this._drawMarks = function() {
         for (var i = 0; i < self.configs.marks.length; i++) {
             self.newGauge.appendChild(self._getMark(i));
+            self._drawMinorMarks(i);
         }
+    }
+
+    /**
+     * Отрисовка побочных точек
+     *
+     * @param  {number} numberMark номер отметки для вычисления положения
+     */
+    this._drawMinorMarks = function(numberMark) {
+        if (self.configs.countMinorSegments <= 0 || numberMark == self.configs.marks.length - 1) return;
+        for (var i = 1; i < self.configs.countMinorSegments; i++) {
+            self.newGauge.appendChild(self._getMinorMark(i, numberMark));
+        }
+
     }
      * Отрисовать gauge, сначала очистив содержимое элемента element
      * затем создется элемент newGauge,
