@@ -63,3 +63,8 @@
 .gauge__mark--inside:after {
     left: 10px;
 }
+
+.gauge__mark--minor:after {
+    content: '.';
+    color: lightgray;
+}
