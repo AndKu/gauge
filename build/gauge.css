@@ -1,0 +1,109 @@
+.gaugeWrap {
+    margin: 0 auto;
+    height: 425px;
+    width: 450px;
+}
+
+.gauge {
+    background: #fff;
+    position: relative;
+    margin: 30px auto 0;
+    height: 400px;
+    width: 400px;
+}
+
+.gauge__segment-start {
+    position: absolute;
+    overflow: hidden;
+    height: 50%;
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    width: 100%;
+}
+
+.gauge__segment-end {
+    overflow: hidden;
+    height: 100%;
+    -webkit-transform-origin: 50% 100%;
+            transform-origin: 50% 100%;
+    width: 100%;
+}
+
+.gauge__segment-color {
+    border-radius: 50%;
+    box-sizing: border-box;
+    border: 5px solid gray;
+    height: 200%;
+    width: 100%;
+}
+
+.gauge__mark {
+    color: gray;
+    position: absolute;
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+    top: calc(50% - 10px);
+    height: 20px;
+    width: 50%;
+}
+
+.gauge__mark:after {
+    content: "-";
+    position: absolute;
+    left: -10px;
+    top: 0;
+}
+.gauge__mark-label {
+    display: inline-block;
+    margin-left: -25px;
+    line-height: 20px;
+}
+
+.gauge__mark-label--inside {
+    margin-left: 25px;
+}
+
+.gauge__mark--inside:after {
+    left: 10px;
+}
+
+.gauge__mark--minor:after {
+    content: '.';
+    color: lightgray;
+}
+
+.gauge__arrow {
+    position: absolute;
+    -webkit-transform-origin: 100% 50%;
+            transform-origin: 100% 50%;
+    top: calc(50% - 10px);
+    text-align: right;
+    transition: .5s ease;
+    height: 20px;
+    width: 50%;
+    z-index: 1;
+}
+
+.gauge__arrow:after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 5px;
+    border: 5px solid transparent;
+    border-right: 220px solid #1E98E4;
+}
+
+.gauge__arrow--inside:after {
+    border-right: 190px solid #1E98E4;
+}
+
+.gauge__arrow-round {
+    display: inline-block;
+    background-color: #1E98E4;
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    position: absolute;
+    right: -10px;
+    top: 0;
+}

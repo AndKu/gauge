@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Gauge Test</title>
+    <link rel="stylesheet" href="gauge.css">
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="gauge.min.js"></script>
+    <link rel="import" href="gauge-component.html">
+    <style>
+    h1, h2 {
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+<h1>gauge</h1>
+<div id="gauge"></div>
+<h2>customize gauge</h2>
+<div id="gauge2"></div>
+<h2>gauge as jquery plugin</h2>
+<div id="gauge3"></div>
+<h2>and as custom component</h2>
+<gauge-component id="gauge4" value="50"></gauge-component>
+<script>
+    function getRandomIntValue() {
+      return Math.random() * 100;
+    }
+
+    window.onload = function () {
+        var gauge = new Gauge(document.getElementById('gauge'));
+        var gauge2 = new Gauge(document.getElementById('gauge2'), {
+            aperture: 180,
+            marks: [0, 20, 40, 60, 80, 100, 120, 140, 160, 180],
+            countMinorSegments: 2,
+            segments: [
+                {
+                    endPosition: 80,
+                    color: 'blue'
+                },
+                {
+                    endPosition: 100,
+                    color: 'red'
+                }
+            ],
+            marksInside: true
+        });
+        var gauge4 = document.getElementById('gauge4');
+        setInterval(function() {
+            gauge.setValue(getRandomIntValue());
+            gauge2.setValue(getRandomIntValue());
+            gauge4.setAttribute('value', getRandomIntValue());
+        }, 1000);
+    };
+
+    $(function(){
+        var gauge3 = $('#gauge3').gauge({value: 10});
+        setInterval(function() {
+            gauge3.setValue(getRandomIntValue());
+        }, 1000);
+    });
+
+</script>
+</body>
+</html>

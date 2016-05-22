@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="gauge.min.js"></script>
+</head>
+<body>
+
+    <template id="tmpl">
+        <style>
+          @import url(gauge.css);
+          :host {
+            display: block;
+          }
+        </style>
+        <div id="gauge"></div>
+    </template>
+    <script>
+        ! function() {
+            var localDocument = document.currentScript.ownerDocument;
+            var tmpl = localDocument.getElementById('tmpl');
+
+            var proto = Object.create(HTMLElement.prototype);
+            var gauge;
+            proto.createdCallback = function() {
+                var root = this.createShadowRoot();
+                root.appendChild(tmpl.content.cloneNode(true));
+
+                this.gauge_tmpl = root.getElementById('gauge');
+
+                gauge = new Gauge(this.gauge_tmpl, {
+                    aperture: +this.getAttribute('aperture') || 270,
+                    value: +this.getAttribute('value') || 0,
+                    marks: this.getAttribute('marks') || [0, 1, 2, 3, 4, 5, 6],
+                    countMinorSegments: this.getAttribute('countMinorSegments') || 10,
+                    segments:  this.getAttribute('marks') || [
+                        {
+                            endPosition: 75,
+                            color: 'gray'
+                        },
+                        {
+                            endPosition: 85,
+                            color: 'orange'
+                        },
+                        {
+                            endPosition: 100,
+                            color: 'red'
+                        }
+                    ],
+                    marksInside:  this.getAttribute('marks') || 0
+                });
+            };
+
+            proto.attributeChangedCallback = function(attrName, oldVal, newVal) {
+                if(attrName == 'value')
+                    gauge.setValue(newVal);
+            }
+
+            document.registerElement('gauge-component', {
+                prototype: proto
+            });
+        }();
+    </script>
+
+</body>
+
+</html>
