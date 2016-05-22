@@ -196,7 +196,7 @@ function Gauge(element, configs) {
         var rotate = calcStartRotate(self.configs.value);
 
         arrow.style.transform = 'rotate(' + rotate + 'deg)';
-        self.arrowElement = arrow;
+        arrowElement = arrow;
 
         arrow.appendChild(round);
         self.newGauge.appendChild(arrow);
