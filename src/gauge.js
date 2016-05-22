@@ -185,6 +185,22 @@ function Gauge(element, configs) {
         }
 
     }
+
+    /**
+     * Отрисовка стрелки
+     */
+    this._drawArrow = function() {
+        var arrow = self._getDomElement(self.configs.marksInside ? "gauge__arrow gauge__arrow--inside" : "gauge__arrow");
+        var round = self._getDomElement('gauge__arrow-round');
+        var rotate = calcStartRotate(self.configs.value);
+
+        arrow.style.transform = 'rotate(' + rotate + 'deg)';
+
+        arrow.appendChild(round);
+        self.newGauge.appendChild(arrow);
+    }
+
+    /**
      * Отрисовать gauge, сначала очистив содержимое элемента element
      * затем создется элемент newGauge,
      * после в него добавляются все элементы gauge
@@ -200,7 +216,7 @@ function Gauge(element, configs) {
         var gaugeWrap = self._getDomElement("gaugeWrap");
         self.newGauge = self._getDomElement("gauge");
 
-        element.appendChild(this.newGauge);
+        self._drawArrow();
         self._drawSegments();
         self._drawMarks();
 
