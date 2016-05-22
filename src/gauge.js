@@ -36,6 +36,19 @@ function Gauge(element, configs) {
     this.configs = configs;
 
     /**
+
+    /**
+     * Создать div с классом segmentClass
+     *
+     * @param  {string} segmentClass класс элемента
+     * @return {object}              <div class="segmentClass"></div>
+     */
+    this._getDomElement = function(segmentClass) {
+        var element = document.createElement("div");
+        element.className = segmentClass;
+        return element;
+    }
+
      * Отрисовать gauge, сначала очистив содержимое элемента element
      * затем создется элемент newGauge,
      * после в него добавляются все элементы gauge
