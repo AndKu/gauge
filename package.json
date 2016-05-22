@@ -13,6 +13,12 @@
   "author": "Andrew Kuznecov <andrew.a.kuznecov@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "browser-sync": "^2.12.8",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.5"
   },
   "homepage": "https://github.com/AndKu/gauge"
 }
