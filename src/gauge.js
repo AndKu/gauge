@@ -239,8 +239,6 @@ function Gauge(element, configs) {
             value = 0;
         } else if(value > 100){
             value = 100;
-        } else {
-            value = 0;
         }
 
         self.value = value;
