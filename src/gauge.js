@@ -36,6 +36,17 @@ function Gauge(element, configs) {
     this.configs = configs;
 
     /**
+    /**
+     * Посчитать конец сегмента
+     *
+     * @param  {number} startSegmet начальная позиция сегмента в процентах
+     * @param  {number} endSegment  конечная позиция сегмента в процентах
+     * @return {number}             значение поворота блока конца сегмента
+     */
+    function calcSegmentEndRotate(startSegmet, endSegment) {
+        var valSegmentEndRotate = self.configs.aperture / 100 * (endSegment - startSegmet) - 180;
+        return valSegmentEndRotate > 0 ? 0 : valSegmentEndRotate;
+    }
 
     /**
      * Создать div с классом segmentClass
