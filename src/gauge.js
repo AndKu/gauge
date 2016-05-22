@@ -128,6 +128,26 @@ function Gauge(element, configs) {
     }
 
     /**
+     * Получить dom отметки
+     *
+     * @param  {number} number номер отметки
+     * @return {object}        domElement c вычесленным поворотом блока
+     */
+    this._getMark = function(number) {
+        var mark = self._getDomElement(self.configs.marksInside ? "gauge__mark gauge__mark--inside" : "gauge__mark");
+        var markLabel = self._getDomElement(self.configs.marksInside ? 'gauge__mark-label gauge__mark-label--inside' : 'gauge__mark-label');
+        markLabel.textContent = self.configs.marks[number];
+
+        var rotate = calcStartRotate((100 / (self.configs.marks.length - 1)) * number);
+        mark.style.transform = 'rotate(' + rotate + 'deg)';
+        markLabel.style.transform = 'rotate(-' + rotate + 'deg)';
+
+        mark.appendChild(markLabel);
+
+        return mark;
+    }
+
+    /**
      * Отрисовка отметок
      */
     this._drawMarks = function() {
