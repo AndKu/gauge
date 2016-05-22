@@ -167,11 +167,15 @@ function Gauge(element, configs) {
             element.removeChild(element.lastChild);
         }
 
+        var gaugeWrap = self._getDomElement("gaugeWrap");
         self.newGauge = self._getDomElement("gauge");
 
         element.appendChild(this.newGauge);
         self._drawSegments();
         self._drawMarks();
+
+        gaugeWrap.appendChild(this.newGauge);
+        element.appendChild(gaugeWrap);
 
         return self;
     }

@@ -1,3 +1,9 @@
+.gaugeWrap {
+    margin: 0 auto;
+    height: 425px;
+    width: 450px;
+}
+
 .gauge {
     background: #fff;
     position: relative;
