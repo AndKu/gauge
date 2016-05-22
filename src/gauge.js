@@ -36,6 +36,15 @@ function Gauge(element, configs) {
     this.configs = configs;
 
     /**
+     * Посчитать началный поворот от положения в процентах
+     *
+     * @param  {number} startSegmet начальное положение в процентах
+     * @return {number}             значение поворота в deg
+     */
+    function calcStartRotate(start) {
+        return (90 + self.configs.aperture / 2 + (360 - self.configs.aperture) + ((self.configs.aperture / 100) * start));
+    }
+
     /**
      * Посчитать конец сегмента
      *
