@@ -55,7 +55,22 @@ function Gauge(element, configs) {
         return self;
     }
 
+    /**
+     * Изменяет значение gauge
+     *
+     * @param {number} value Значение в процентах от апертуры
+     */
     this.setValue = function(value) {
+        value = value || 0;
+        if(value < 0) {
+            value = 0;
+        } else if(value > 100){
+            value = 100;
+        } else {
+            value = 0;
+        }
+
+        self.value = value;
     }
 
     this.draw();
